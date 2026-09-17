@@ -1,0 +1,22 @@
+{
+  "name": "consulta-users",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "prepare": "husky",
+    "lint:backend": "uv run --directory backend ruff check .",
+    "format:backend": "uv run --directory backend ruff format --check .",
+    "types:backend": "uv run --directory backend mypy",
+    "test:backend": "uv run --directory backend pytest -q",
+    "types:frontend": "npm --prefix frontend run typecheck",
+    "test:frontend": "npm --prefix frontend test",
+    "check": "npm run lint:backend && npm run format:backend && npm run types:backend && npm run types:frontend",
+    "test": "npm run test:backend && npm run test:frontend",
+    "verify": "npm run check && npm run test"
+  },
+  "devDependencies": {
+    "husky": "^9.1.7",
+    "lint-staged": "^15.5.2"
+  }
+}
